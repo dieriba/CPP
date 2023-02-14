@@ -10,13 +10,13 @@ CFLAGS	=	-Wall -Wextra -Werror -MMD -std=c++98
 
 NAME	=	megaphone
 
-all:	$(NAME)
-
-.c.o :	
+.cpp.o :	
 			$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 $(NAME):	$(OBJS)	
 			$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+
+all:		$(NAME)
 
 clean:
 			rm -rf *.o
