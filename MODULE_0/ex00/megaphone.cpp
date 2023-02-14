@@ -12,8 +12,7 @@ int main(int argc, char **argv)
             j = -1;
             while (argv[i][++j])
                 argv[i][j] = islower(argv[i][j]) ? toupper(argv[i][j]) : argv[i][j];
-            phone = argv[i];
-            std::cout << phone << std::endl;
+            std::cout << argv[i] << std::endl;
         }
     else
         std::cout << phone << std::endl;
