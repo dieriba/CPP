@@ -15,7 +15,7 @@ bool is_blank(const std::string& line)
 
 bool getOneLine(std::string& line)
 {
-    if (getline(std::cin, line) && !is_blank(line))
+    if (getline(std::cin, line))
         return true;
     return false;
 }
@@ -27,7 +27,10 @@ int main(void)
 
    while (1)
     {
-        std::cout << "ADD, SEARCH and EXIT" << std::endl;
+        std::cout 
+            << "What action do you want to do : ADD, SEARCH or EXIT" 
+            << std::endl
+            << "action: ";
         if(!getOneLine(action))
             break;
         else if (action == "ADD")

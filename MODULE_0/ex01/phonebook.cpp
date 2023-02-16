@@ -1,20 +1,24 @@
 #include "./includes/phonebook.hpp"
 
-void	print_(std::string line)
+void	print_and_get_line(std::string line, std::string& info)
 {
-	std::cout << line << std::endl;
+	if (std::cin)
+	{
+		std::cout << line;
+		getline(std::cin, info);
+	}
 }
 
 PhoneBook::PhoneBook(int i)
 {
-	this -> i = i;
+	this -> _i = i;
 }
 
 void PhoneBook::search_contact(void)
 {
 	std::string line;
 	int	number;
-	std::cout << "Enter the index of the contact you want more info" << std::endl;
+	std::cout << "Enter the index of the contact you want more info: ";
 	if (!getOneLine(line))
 	{
 		std::cout << "Error with index" << std::endl;
@@ -28,14 +32,14 @@ void PhoneBook::search_contact(void)
 void PhoneBook::display_all_contacts(void)
 {
 	int	from = 0;
-	int to = this -> i;
+	int to = this -> _i + (this -> _i == 6);
 	std::cout 
         << "|" << std::setw(10) << "Index"
         << "|" << std::setw(10) << "First Name"
         << "|" << std::setw(10) << "Last Name"
         << "|" << std::setw(10) << "Nick Name"
         << std::endl;
-	while (from <= to)
+	while (from < to)
 	{
 		std::cout 
 			<< std::setw(10) << this -> contacts[from].get_index()
@@ -48,38 +52,34 @@ void PhoneBook::display_all_contacts(void)
 	this -> search_contact();
 }
 
-int	PhoneBook::clean_contact(void)
+int	PhoneBook::check_valid_info(std::string info[5])
 {
-	this -> contacts[this -> i].clean();
-	return (1);
+	int	i = -1;
+	while (++i < 5)
+		if (info[i].length() == 0 || is_blank(info[i]))
+			return(1);
+	return (0);
 }
-
 int PhoneBook::add_contact(void)
 {
-	std::string	info;
-	int	i = this -> i;
-	print_("Enter the contact firstname's");
-	if (!getOneLine(info))
-		return (this -> clean_contact());
-	this -> contacts[i].set_first_name(info);
-	print_("Enter the contact lastname's");
-	if (!getOneLine(info))
-		return (this -> clean_contact());
-	this -> contacts[i].set_last_name(info);
-	print_("Enter the contact nickname's");
-	if (!getOneLine(info))
-		return (this -> clean_contact());
-	this -> contacts[i].set_nick_name(info);
-	print_("Enter the contact phonenumber's");
-	if (!getOneLine(info))
-		return (this -> clean_contact());
-	this -> contacts[i].set_phone_number(info);
-	print_("Enter the contact darkest secret's");
-	if (!getOneLine(info))
-		return (this -> clean_contact());
-	this -> contacts[i].set_darkest_secret(info);
+	std::string	info[5];
+	int	i = this -> _i;
+	print_and_get_line("Enter the contact lastname's: ", info[0]);
+	print_and_get_line("Enter the contact firstname's: ", info[1]);
+	print_and_get_line("Enter the contact nickname's: ", info[2]);
+	print_and_get_line("Enter the contact phonenumber's: ", info[3]);
+	print_and_get_line("Enter the contact darkest secret's: ", info[4]);
+	if (!std::cin)
+		std::cout << std::endl;
+	if (this -> check_valid_info(info))
+		return (1);
+	this -> contacts[i].set_last_name(info[0]);
+	this -> contacts[i].set_first_name(info[1]);
+	this -> contacts[i].set_nick_name(info[2]);
+	this -> contacts[i].set_phone_number(info[3]);
+	this -> contacts[i].set_darkest_secret(info[4]);
 	this -> contacts[i].set_index(i);
-	i++;
-	i = 8 ? 7 : i;
+	this -> _i++;
+	this -> _i = (this -> _i == 7) ? 6 : this -> _i;
 	return (0);
 }

@@ -18,7 +18,6 @@ class Contact
 		std::string	get_darkset_secret(void);
 		std::string	get_phone_number(void);
 		int			get_index(void);
-		void		clean();
 
 	private:
 		int			_index;

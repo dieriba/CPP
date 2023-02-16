@@ -11,8 +11,8 @@ class PhoneBook
         int add_contact();
         void display_all_contacts();
         void search_contact(void);
-        int clean_contact();
+        int	check_valid_info(std::string info[5]);
     private:
-        int i;
+        int _i;
 };
 # endif

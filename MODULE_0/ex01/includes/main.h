@@ -5,4 +5,5 @@
 	# include <iostream>
 	# include <iomanip>
 bool getOneLine(std::string& line);
+bool is_blank(const std::string& line);
 # endif

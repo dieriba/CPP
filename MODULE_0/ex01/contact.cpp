@@ -67,12 +67,3 @@ int	Contact::get_index(void)
 {
 	return (this -> _index);
 }
-
-void Contact::clean(void)
-{
-	this -> _first_name = "";
-	this -> _last_name = "";
-	this -> _nick_name = "";
-	this -> _phone_number = "";
-	this -> _darkest_secret = "";
-}
