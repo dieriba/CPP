@@ -1,14 +1,5 @@
 #include "./includes/phonebook.hpp"
 
-void	print_and_get_line(std::string line, std::string& info)
-{
-	if (std::cin)
-	{
-		std::cout << line;
-		getline(std::cin, info);
-	}
-}
-
 PhoneBook::PhoneBook(int i)
 {
 	this -> _i = i;
@@ -24,7 +15,9 @@ void PhoneBook::search_contact(void)
 		std::cout << "Error with index" << std::endl;
 		return ;
 	}
-	number = line[0] - 48;
+	number = check_input_index(line);
+	if (number == -1)
+		return ;
 	std::cout << "Here are the asked informations for" << std::endl;
 	this -> contacts[number].show_info();
 }
