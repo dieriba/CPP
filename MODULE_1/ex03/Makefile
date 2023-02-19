@@ -1,7 +1,7 @@
 SRC		=	main.cpp \
-			newZombie.cpp \
-			randomChump.cpp \
-			Zombie.cpp
+			Weapon.cpp \
+			HumanA.cpp \
+			HumanB.cpp \
 
 OBJS	=	$(SRC:.cpp=.o)
 
@@ -11,7 +11,7 @@ CC		=	c++ -g3
 
 CFLAGS	=	-Wall -Wextra -Werror -MMD -std=c++98
 
-NAME	=	zombie
+NAME	=	violence
 
 .cpp.o :	
 			$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@

@@ -1,7 +1,6 @@
 SRC		=	main.cpp \
-			newZombie.cpp \
-			randomChump.cpp \
-			Zombie.cpp
+			file.cpp \
+			overload_file.cpp
 
 OBJS	=	$(SRC:.cpp=.o)
 
@@ -11,7 +10,7 @@ CC		=	c++ -g3
 
 CFLAGS	=	-Wall -Wextra -Werror -MMD -std=c++98
 
-NAME	=	zombie
+NAME	=	sed
 
 .cpp.o :	
 			$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
