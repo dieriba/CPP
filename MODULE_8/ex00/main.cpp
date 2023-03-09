@@ -5,17 +5,17 @@
 #define MAX_VAL 750
 int main(int, char**)
 {
-	std::vector<int>	l;
+	std::vector<int> vec;
+	std::vector<int>::iterator iterator;
+	int to_find = 10;
 
-	l.push_back(42);
-	l.push_back(21);
-	l.push_back(1337);
-	l.push_back(84);
-	std::vector<int>::iterator it = easyfind(l, 21);
-	if (it == l.end())
-		std::cout << "Can't find this element..." << std::endl;
+	vec.push_back(10);
+	vec.push_back(12);
+
+	iterator = easyfind(vec, to_find);
+	if (iterator != vec.end())
+		std::cout << "Number: " << (*iterator) << " Found !" << std::endl;
 	else
-		std::cout << "Element " << *it << " found !" << std::endl;
-
+		std::cout << "The number " << to_find << " was not found !" << std::endl; 
 	return 0;
 }
