@@ -75,9 +75,9 @@ void BitcoinExchange::clearAndPrint(std::string& line) const
     std::string s;
     std::string s1;
     std::stringstream stream(line);
+    std::stringstream ss;
     double value = 0;
-    double base_val;
-    int lims;
+    long double base_val;
 
     std::getline(stream, s, '|');
     std::getline(stream, s1);
@@ -90,17 +90,15 @@ void BitcoinExchange::clearAndPrint(std::string& line) const
             printErr("bad input => " + s1);
         else
         {
-            std::stringstream ss(s1);
+            ss << s1;
+            ss >> base_val;
             s1.erase(0, 1);
-            ss >> lims;
-            if (ss.fail())
+            if (ss.fail() || base_val > 1000)
                 printErr("too large a number");
-            else if (lims < 0)
+            else if (base_val < 0)
                 printErr("not a positive number.");
             else
             {
-                std::stringstream ss1(s1);
-                ss1 >> base_val;
                 value *= base_val;
                 std::cout << s << " => " << s1 << " = " << value << std::endl;
             }
