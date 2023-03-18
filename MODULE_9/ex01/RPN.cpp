@@ -44,7 +44,7 @@ void RPN::makeStack(void)
     {
         if (s.find_first_not_of(RPN_BASE) != std::string::npos || s.length() > 1)
             printErr();
-        if (!isdigit(s.at(0)))
+        if (s.size() > 0 && !isdigit(s.at(0)))
         {
             if (!getTop(tmp)) printErr();
             top = tmp;
@@ -56,7 +56,7 @@ void RPN::makeStack(void)
             res = RPN::_calcul[c % 10](res, top);
             rpn.push(res);
         }
-        else
+        else if (s.size() > 0)
             rpn.push(atoi(s.c_str()));
     }
     std::cout << res << std::endl;
