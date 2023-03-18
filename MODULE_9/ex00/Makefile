@@ -1,5 +1,5 @@
 SRC		=	main.cpp \
-			RPN.cpp
+			BitcoinExchange.cpp
 
 OBJS	=	$(SRC:.cpp=.o)
 
@@ -9,7 +9,7 @@ CC		=	c++ -g3
 
 CFLAGS	=	-Wall -Wextra -Werror -MMD -std=c++98
 
-NAME	=	RPN
+NAME	=	btc
 
 .cpp.o :	
 			$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
