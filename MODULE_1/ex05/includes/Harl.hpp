@@ -8,7 +8,7 @@ class Harl
     public:
         Harl();
 		void complain(std::string level);
-        int find_index(std::string level);
+        int find_index(const std::string& level);
         typedef void(Harl::*func)();
     private:
         void debug(void);

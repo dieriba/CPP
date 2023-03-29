@@ -16,7 +16,7 @@ int Harl::find_index(std::string level)
 
     while (++i < 4)
     {
-        if (this -> _func_name[i].compare(level) == 0)
+        if (_func_name[i].compare(level) == 0)
             return (i);
     }
     return (-1);
@@ -24,28 +24,28 @@ int Harl::find_index(std::string level)
 
 int Harl::complain(std::string level)
 {
-    int i = this -> find_index(level);
+    int i = find_index(level);
     if (i < 0)
         return (-1);
     switch (i)
     {
         case 0:
-            this -> debug();
-            this -> info();
-            this -> warning();
-            this -> error();
+            debug();
+            info();
+            warning();
+            error();
             break ;
         case 1:
-            this -> info();
-            this -> warning();
-            this -> error();
+            info();
+            warning();
+            error();
             break ;
         case 2:
-            this -> warning();
-            this -> error();
+            warning();
+            error();
             break;
         case 3:
-            this -> error();
+            error();
         default:
             break;
     }

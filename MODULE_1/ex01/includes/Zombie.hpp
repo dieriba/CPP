@@ -4,13 +4,13 @@
 class Zombie
 {
     public:
-        void announce(void);
-        void setZombieName(std::string name);
         Zombie();
-        Zombie(std::string& name); 
+        Zombie(const std::string& name); 
         ~Zombie();
+        void announce(void) const;
+        void setZombieName(const std::string& name);
     private:
-        std::string name;
+        std::string _name;
 };
 
 #endif

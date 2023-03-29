@@ -1,6 +1,6 @@
 #include "./includes/main.h"
 
-void check_files(std::ifstream& file, std::string &file_name)
+void check_files(const std::ifstream& file, const std::string &file_name)
 {
     if (file)
         return;
@@ -9,7 +9,7 @@ void check_files(std::ifstream& file, std::string &file_name)
     exit(1);
 }
 
-void check_files(std::ofstream& file, std::string &file_name)
+void check_files(const std::ofstream& file, const std::string &file_name)
 {
     if (file)
         return;

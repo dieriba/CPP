@@ -10,7 +10,7 @@ int main()
 {
     Harl harlay;
 
-    harlay.complain("debug");
+    /*harlay.complain("debug");
     harlay.complain("info");
     harlay.complain("warning");
     harlay.complain("error");
@@ -21,7 +21,7 @@ int main()
     harlay.complain("debug");
     harlay.complain("info");
     harlay.complain("warning");
-    harlay.complain("error");
+    harlay.complain("error");*/
     harlay.complain("debuga");
     harlay.complain("infoa");
     harlay.complain("warninga");

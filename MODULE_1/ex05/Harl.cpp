@@ -14,13 +14,13 @@ Harl::Harl()
 
 /*--------------------------PUBLIC_--------------------------*/
 
-int Harl::find_index(std::string level)
+int Harl::find_index(const std::string& level)
 {
     int i = -1;
 
     while (++i < 4)
     {
-        if (this -> _func_name[i].compare(level) == 0)
+        if (_func_name[i].compare(level) == 0)
             return (i);
     }
     return (-1);
