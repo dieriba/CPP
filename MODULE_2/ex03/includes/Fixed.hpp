@@ -36,7 +36,7 @@ class Fixed
     private:
         int _fixed_point;
         static const int fractionals_bits = 8;
-        static const float epsilon = 1;
+        static const float epsilon;
 };
 
 inline bool operator< (const Fixed& lhs, const Fixed& rhs) { return lhs.getRawBits() < rhs.getRawBits(); }
