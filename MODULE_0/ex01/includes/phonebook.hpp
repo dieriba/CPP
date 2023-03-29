@@ -6,7 +6,7 @@
 class PhoneBook
 {
     public:
-        PhoneBook(int i);
+        PhoneBook();
         Contact contacts[8];
         int add_contact();
         void display_all_contacts();

@@ -4,17 +4,19 @@
 
 int main(void)
 {
-    PhoneBook   phonebook(0);
+    PhoneBook   phonebook;
     std::string action;
 
    while (1)
     {
         std::cout 
-            << "What action do you want to do : ADD, SEARCH or EXIT" 
-            << std::endl
+            << "What action do you want to do : ADD, SEARCH or EXIT" << std::endl
             << "action: ";
         if(!getOneLine(action))
+        {
+            std::cout << "closing phonebook..." << std::endl;
             break;
+        }
         else if (action == "ADD")
             phonebook.add_contact();
         else if (action == "SEARCH")
