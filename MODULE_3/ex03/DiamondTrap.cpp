@@ -5,10 +5,10 @@
 
 DiamondTrap::DiamondTrap():ClapTrap(),FragTrap(),ScavTrap()
 {
-    this -> _name = "nobody";
-    this -> _health = FragTrap::_health;
-    this -> _energy = ScavTrap::_energy;
-    this -> _damage = FragTrap::_damage;
+    _name = "nobody";
+    _health = 100;
+    _energy = 50;
+    _damage = 30;
     ClapTrap::_name = "nobody_clap_name";
     std::cout << "DiamondTrap " << _name << " has been created"
               << " with " << _health << " healths points, "
@@ -16,13 +16,13 @@ DiamondTrap::DiamondTrap():ClapTrap(),FragTrap(),ScavTrap()
               << std::endl;
 }
 
-DiamondTrap::DiamondTrap(std::string name)
+DiamondTrap::DiamondTrap(const std::string& name)
 :ClapTrap(name + "_clap_name"),FragTrap(name),ScavTrap(name)
 {
-    this -> _name = name;
-    this -> _health = FragTrap::_health;
-    this -> _energy = FragTrap::_energy;
-    this -> _damage = FragTrap::_damage;
+    _name = name;
+    _health = 100;
+    _energy = 50;
+    _damage = 30;
     std::cout << "DiamondTrap " << _name << " has been created"
               << " with " << _health << " healths points, "
               << _energy << " energy points and " << _damage << " damage points."
@@ -32,29 +32,27 @@ DiamondTrap::DiamondTrap(std::string name)
 DiamondTrap::DiamondTrap(const DiamondTrap& rhs)
 :ClapTrap(rhs),FragTrap(rhs),ScavTrap(rhs)
 {
-    this -> _name = rhs._name;
-    this -> _health = FragTrap::_health;
-    this -> _energy = ScavTrap::_energy;
-    this -> _damage = FragTrap::_damage;
+    _name = rhs._name;
+    _health = 100;
+    _energy = 50;
+    _damage = 30;
 };
 
 DiamondTrap& DiamondTrap::operator=(const DiamondTrap& rhs)
 {
     if (this == &rhs)
         return (*this);
-    this -> ClapTrap::_name = rhs.ClapTrap::_name;
-    this -> _name = rhs.getName();
-    this -> _health = rhs.getHealthValue();
-    this -> _energy = rhs.getEnergyValue();
-    this -> _damage = rhs.getDamagePoints();
+    ClapTrap::_name = rhs.ClapTrap::_name;
+    _name = rhs.getName();
+    _health = rhs.getHealthValue();
+    _energy = rhs.getEnergyValue();
+    _damage = rhs.getDamagePoints();
     return (*this);
 }
 
 DiamondTrap::~DiamondTrap()
 {
-    std::cout << "Unfortunately DiamondTrap "
-              << _name << " is no more"
-              << std::endl;
+    std::cout << "Unfortunately DiamondTrap " << _name << " is no more" << std::endl;
 }
 /*------------------------CONSTRUCTOR DESTRUCTOR------------------------*/
 
@@ -64,7 +62,7 @@ DiamondTrap::~DiamondTrap()
 void DiamondTrap::whoAmI(void)
 {
     std::cout << "Am i " << ClapTrap::_name
-              << " or Am i " << this -> _name
+              << " or Am i " << _name
               << " that is the question..." << std::endl;
 }
 void DiamondTrap::attack(const std::string& target) {ScavTrap::attack(target);}

@@ -4,20 +4,20 @@
 
 ScavTrap::ScavTrap():ClapTrap("nobody")
 {
-    this -> _health = 100;
-    this -> _energy = 50;
-    this -> _damage = 20;
+    _health = 100;
+    _energy = 50;
+    _damage = 20;
     std::cout << "ScavTrap " << _name << " has been created"
-              << " with " << _health << " healths points, "
-              << _energy << " energy points and " << _damage << " damage points."
+              << " with " << _health << " healths points, " << _energy
+              << " energy points and " << _damage << " damage points."
               << std::endl;
 }
 
-ScavTrap::ScavTrap(std::string name):ClapTrap(name)
+ScavTrap::ScavTrap(const std::string& name):ClapTrap(name)
 {
-    this -> _health = 100;
-    this -> _energy = 50;
-    this -> _damage = 20;
+    _health = 100;
+    _energy = 50;
+    _damage = 20;
     std::cout << "ScavTrap " << _name << " has been created"
               << " with " << _health << " healths points, "
               << _energy << " energy points and " << _damage << " damage points."
@@ -26,28 +26,23 @@ ScavTrap::ScavTrap(std::string name):ClapTrap(name)
 
 ScavTrap::ScavTrap(const ScavTrap& rhs):ClapTrap(rhs)
 {
-    this -> _health = 100;
-    this -> _energy = 50;
-    this -> _damage = 20;
+    _health = 100;
+    _energy = 50;
+    _damage = 20;
 };
 
 ScavTrap& ScavTrap::operator=(const ScavTrap& rhs)
 {
     if (this == &rhs)
         return (*this);
-    this -> _name = rhs.getName();
-    this -> _health = rhs.getHealthValue();
-    this -> _energy = rhs.getEnergyValue();
-    this -> _damage = rhs.getDamagePoints();
+    _name = rhs.getName();
+    _health = rhs.getHealthValue();
+    _energy = rhs.getEnergyValue();
+    _damage = rhs.getDamagePoints();
     return (*this);
 }
 
-ScavTrap::~ScavTrap()
-{
-    std::cout << "Unfortunately ScavTrap "
-              << _name << " is no more"
-              << std::endl;
-}
+ScavTrap::~ScavTrap() {std::cout << "Unfortunately ScavTrap " << _name << " is no more" << std::endl;}
 /*------------------------CONSTRUCTOR DESTRUCTOR------------------------*/
 
 
@@ -55,16 +50,16 @@ ScavTrap::~ScavTrap()
 
 void ScavTrap::attack(const std::string& target)
 {
-    if (this -> printState()) return ;
-    this -> _energy -= 1;
-    std::cout << "ScavTrap " << this -> getName() << " attacks "
-              << target << " , causing " << this -> getDamagePoints() << " points of damage!"
+    if (printState()) return ;
+    _energy--;
+    std::cout << "ScavTrap " << _name << " attacks "
+              << target << " , causing " << _damage << " points of damage!"
               << std::endl;
 }
 
 void ScavTrap::guardGate(void)
 {
-    std::cout << "ScavTrap " << this -> _name
+    std::cout << "ScavTrap " << _name
               << " has now enabled the keeper mode" << std::endl;
 }
 /*------------------------MEMBER FUNCTION------------------------*/
