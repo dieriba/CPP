@@ -10,7 +10,7 @@ int main(int argc, char **argv)
     std::string file_name(argv[1]);
     std::string s1(argv[2]);
     std::string s2(argv[3]);
-
+    if (s1.size() == 0) return 1;
     check_files(file, file_name);
     read_write_to_file(file, file_name.append(".replace"), s1, s2);
 }
