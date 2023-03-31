@@ -32,11 +32,11 @@ bool BitcoinExchange::checkValidDateFormat(std::string& date) const
     if (date[i++] != '-') return false ;
     for (len = i + 2; i != len; i++) if (!isdigit(date[i])) return false ;
     d_m = atoi(date.substr(i - 2, i).c_str());
-    if (d_m < 0 || d_m > 31) return false ;
+    if (d_m < 1 || d_m > 31) return false ;
     if (date[i++] != '-') return false ;
     for (len = i + 2; i != len; i++) if (!isdigit(date[i])) return false ;
     d_m = atoi(date.substr(i - 2, i).c_str());
-    if (d_m < 0 || d_m > 31) return false ;
+    if (d_m < 1 || d_m > 31) return false ;
     return true ;
 }
 

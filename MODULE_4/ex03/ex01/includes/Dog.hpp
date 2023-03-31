@@ -1,16 +1,14 @@
-#ifndef _CAT_HPP_
-#define _CAT_HPP_
+#ifndef _DOG_HPP_
+#define _DOG_HPP_
 #include "Animal.hpp"
 #include "Brain.hpp"
-class Cat : public Animal
+class Dog : public Animal
 {
     public:
-        Cat();
-        Cat(const Cat& rhs);
-        ~Cat();
-
-        Cat& operator=(const Cat& rhs);
-        
+        Dog();
+        ~Dog();
+        Dog(const Dog& rhs);
+        Dog& operator=(const Dog& rhs);
         void makeSound() const;
         const std::string& getType() const;
     private:
