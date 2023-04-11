@@ -44,7 +44,7 @@ void Bureaucrat::downGrade(void)
 
 const char* Bureaucrat::GradeTooHighException::what(void) const throw()
 {
-    return "Bureaucrate Grade's greatest value shall be 1\n";
+    return "Bureaucrate Grade's lowest value shall be 150\n";
 };
 
 const char* Bureaucrat::GradeTooLowException::what(void) const throw()
@@ -57,7 +57,6 @@ void Bureaucrat::signForm(const Form& form) const
     if (form.getIsSigned())
         std::cout << name << "signed form";
     else
-        std::cout << "<bureaucrat> couldn't sign <form> because <reason>";
-    std::cout << std::endl;
+        std::cout << name << " couldn't sign " << form.getName() << "because his grade did not meet the requirements" << std::endl;
 };
 /*------------------------------MEMBER FUNCTION SETTER------------------------------*/

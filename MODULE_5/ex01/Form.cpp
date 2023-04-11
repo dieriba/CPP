@@ -35,7 +35,7 @@ Form::~Form(){;};
 /*----------------------------MEMBER FUNCTION----------------------------*/
 const char* Form::GradeTooHighException::what(void) const throw()
 {
-    return "Form's Grade greatest value shall be 1\n";
+    return "Form's Grade lowest value shall be 150\n";
 };
 
 const char* Form::GradeTooLowException::what(void) const throw()

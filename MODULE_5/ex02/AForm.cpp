@@ -35,12 +35,12 @@ AForm::~AForm(){;};
 /*----------------------------MEMBER FUNCTION----------------------------*/
 const char* AForm::GradeTooHighException::what(void) const throw()
 {
-    return "AForm's Grade greatest value shall be 150\n";
+    return "AForm's Grade lowest value shall be 150\n";
 };
 
 const char* AForm::GradeTooLowException::what(void) const throw()
 {
-    return "AForm's Grade lowest value shall be 1\n";
+    return "AForm's Grade greatest value shall be 1\n";
 };
 
 const char* AForm::FormNotSigned::what(void) const throw()

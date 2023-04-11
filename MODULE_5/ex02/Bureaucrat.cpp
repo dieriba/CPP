@@ -72,6 +72,6 @@ void Bureaucrat::executeForm(AForm const & form)
         return ;
     }
     form.execute(*this);
-    std::cout << getName() << " executed the form\n";
+    std::cout << getName() << " executed " << form.getName() << std::endl;
 }
 /*------------------------------MEMBER FUNCTION SETTER------------------------------*/

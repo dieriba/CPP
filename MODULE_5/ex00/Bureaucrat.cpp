@@ -43,7 +43,7 @@ void Bureaucrat::downGrade(void)
 
 const char* Bureaucrat::GradeTooHighException::what(void) const throw()
 {
-    return "Bureaucrate Grade's greatest value shall be 1\n";
+    return "Bureaucrate Grade's lowest value shall be 1\n";
 };
 
 const char* Bureaucrat::GradeTooLowException::what(void) const throw()

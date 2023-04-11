@@ -27,8 +27,12 @@ AForm* Intern::makeForm(const std::string& name, const std::string& target)
     while (++i < 3)
     {
         if (name == _form[i]._name)
+        {
+            std::cout << "Intern creates " << _form[i]._name << std::endl;
             return (_form[i].make(target));
+        }
     }
+    std::cerr << "YOUR SLAVE I MEAN INTERNEE CANT CREATE A FORM THAT DOES NOT EXIST\n";
     return NULL;
 }
 
