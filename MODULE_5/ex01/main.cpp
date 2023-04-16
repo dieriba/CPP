@@ -19,15 +19,66 @@ std::ostream& operator<<(std::ostream& os, const Form& form)
 
 int	main()
 {
-	Bureaucrat	thiery = Bureaucrat("Thiery", 3);
-	Bureaucrat	thiery_copy = thiery;
-	Bureaucrat	sophie = Bureaucrat("Sophie", 150);
-	Bureaucrat	lou = Bureaucrat("Lou", 20);
+	Bureaucrat	dieri;
+	Bureaucrat dieri_copy;
+	Bureaucrat sophie;
+	Bureaucrat lou;
+	
+	Form f1,f2,f3;
+	try
+	{
+	 	dieri = Bureaucrat("dieri", 3);
+		dieri_copy = dieri;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
 
-	Form		f1 = Form("f1", 75, 1);
-	Form		f2 = Form("f2", 2, 1);
-	Form		f3 = Form("f3", 20, 1);
+	try
+	{
+		sophie = Bureaucrat("Sophie", 150);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
 
+	try
+	{
+		lou = Bureaucrat("Lou", 20);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+
+	try
+	{
+		f1 = Form("f1", 75, 1);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+
+	try
+	{
+		f2 = Form("f2", 2, 1);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+
+	try
+	{
+		f3 = Form("f3", 20, 1);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
 	std::cout << "Create a form with incorect grade: ";
 	try
 	{
@@ -45,31 +96,31 @@ int	main()
 	}
 	catch (std::exception &e)
 	{
-		std::cout << e.what() << std::endl;
+		std::cerr << e.what() << std::endl;
 	}
 
-	std::cout << "BeSigned: Thiery sign F2: ";
+	std::cout << "BeSigned: dieri sign F2: ";
 	try
 	{
-		f2.beSigned(thiery);
+		f2.beSigned(dieri);
 		std::cout << "OK" << std::endl;
 	}
 	catch (std::exception &e)
 	{
-		std::cout << e.what() << std::endl;
+		std::cerr << e.what() << std::endl;
 	}
 
-	thiery_copy.upGrade();
+	dieri_copy.upGrade();
 
 	std::cout << "BeSigned: Thierry_copy sign F2: ";
 	try
 	{
-		f2.beSigned(thiery_copy);
+		f2.beSigned(dieri_copy);
 		std::cout << "OK" << std::endl;
 	}
 	catch (std::exception &e)
 	{
-		std::cout << e.what() << std::endl;
+		std::cerr << e.what() << std::endl;
 	}
 
 	std::cout << "SignForm: Lou sign F3: ";
@@ -79,7 +130,7 @@ int	main()
 	}
 	catch (std::exception &e)
 	{
-		std::cout << e.what() << std::endl;
+		std::cerr << e.what() << std::endl;
 	}
 
 	return 0;

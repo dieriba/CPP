@@ -11,6 +11,13 @@ void checkAdresses(Data* ptr)
 
 int main ()
 {
-    Data obj;
-    checkAdresses(&obj);    
+    try
+    {
+        Data obj;
+        checkAdresses(&obj);
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << std::endl;
+    }   
 }

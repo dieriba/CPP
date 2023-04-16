@@ -3,7 +3,9 @@
 
 /*------------------------------CONSTRUCTOR/DESTRUCTOR------------------------------*/
 Bureaucrat::Bureaucrat():name("unknow"),grade(-1){};
+
 Bureaucrat::Bureaucrat(const Bureaucrat& rhs):name(rhs.name),grade(rhs.grade){};
+
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat& rhs)
 {
     if (this == &rhs)
@@ -11,7 +13,9 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat& rhs)
     grade = rhs.grade;
     return (*this);
 };
+
 Bureaucrat::~Bureaucrat(){};
+
 Bureaucrat::Bureaucrat(const std::string& name, int grade):name(name)
 {
     if (grade > 150)

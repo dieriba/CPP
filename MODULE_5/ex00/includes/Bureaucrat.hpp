@@ -31,4 +31,4 @@ class Bureaucrat
         const std::string name;
         int grade;
 };
-#endif
+# endif

@@ -30,30 +30,50 @@ void identify(Base& p)
 {
     try 
     {
-        dynamic_cast<A&>(p);
+        A &t = dynamic_cast<A&>(p);
+        (void)t;
         std::cout << "p: " << "\"A\"" << std::endl;
     }
-    catch (std::exception &e){};
+    catch (const std::exception &e)
+    {
+        std::cerr << e.what() << std::endl;
+    };
     try 
     {
-        dynamic_cast<B&>(p);
+        B& t = dynamic_cast<B&>(p);
+        (void)t;
         std::cout << "p: " << "\"B\"" << std::endl;
     }
-    catch (std::exception &e){};
+    catch (const std::exception &e)
+    {
+        std::cerr << e.what() << std::endl;
+    };
     try 
     {
-        dynamic_cast<C&>(p);
+        C& t = dynamic_cast<C&>(p);
+        (void)t;
         std::cout << "p: " << "\"C\"" << std::endl;
     }
-    catch (std::exception &e){};
+    catch (const std::exception &e)
+    {
+        std::cerr << e.what() << std::endl;
+    };
 }
 
 int main ()
 {
     Base* p;
   
-    p = genereate();
-    identify(p);
-    identify(*p);
-    delete p;
+    try
+    {
+        p = genereate();
+        identify(p);
+        identify(*p);
+        delete p ;
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << std::endl;
+        delete p;
+    }
 }

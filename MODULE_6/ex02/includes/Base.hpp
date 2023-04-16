@@ -4,6 +4,7 @@
 class Base
 {
     public:
+        void print();
         virtual ~Base();
 };
 

@@ -29,34 +29,33 @@ void Converter::printChar(const std::string& literal)
         std::cout << "Non displayble" << std::endl;
     else
         std::cout << "impossible" << std::endl;
-    errno = 0;
 }
 
 void Converter::printInt(const std::string& literal)
 {
-    long value;
-    char *ptr;
-    const char *lit_c = literal.c_str();
+    int value;
+    std::stringstream ss(literal);
+    ss >> value;
     std::cout << "Int: ";
-    value = strtol(lit_c, &ptr, 10);
-    if (type == INT && ((value >= __INT_MIN_ &&  value <= __INT_MAX__) && (errno != ERANGE && lit_c != ptr)))
+    if (ss.fail())
+        std::cout << "impossible" << std::endl;
+    else if (type == INT)
         std::cout << value << std::endl;
-    else if ((type != CHAR && type != INT) && ((value >= __INT_MIN_ && value <= __INT_MAX__) && (errno != ERANGE && lit_c != ptr)))
+    else if (type != CHAR && type != INT)
         std::cout << value << std::endl;
     else
         std::cout << "impossible" << std::endl;
-    errno = 0;
 }
 
 void Converter::printDouble(const std::string& literal)
 {
+    double value;
+    std::stringstream ss(literal);
     std::string lit_cpy = literal;
-    char *ptr;
-    const char *lit_c = literal.c_str();
-    double value = strtod(literal.c_str(), &ptr);
     std::cout << std::setprecision(1) << std::fixed;
     std::cout << "Double: ";
-    if ((type != CHAR && type != IMPOSSIBLE) && ((lit_c == ptr || *ptr != 0) || errno == ERANGE))
+    ss >> value;
+    if ((type != CHAR && type != IMPOSSIBLE) && ss.fail())
         std::cout << "impossible" << std::endl;
     else if (type != CHAR && type != IMPOSSIBLE)
         std::cout << value << std::endl;
@@ -64,18 +63,18 @@ void Converter::printDouble(const std::string& literal)
         std::cout << lit_cpy << std::endl;
     else
         std::cout << "impossible" << std::endl;
-    errno = 0;
 }
 
 void Converter::printFloat(const std::string& literal)
 {
+    float value;
     std::string lit_cpy = literal;
-    char *ptr;
-    const char *lit_c = literal.c_str();
+    std::stringstream ss(literal);
     std::cout << std::setprecision(1) << std::fixed;
-    float value = strtod(literal.c_str(), &ptr);
     std::cout << "Float: ";
-    if ((type == FLOAT || type == DOUBLE) && ((lit_c == ptr || *ptr != 0) || errno == ERANGE))
+
+    ss >> value;
+    if ((type == FLOAT || type == DOUBLE) && ss.fail())
         std::cout << "impossible" << std::endl;
     else if (type != CHAR && type != IMPOSSIBLE)
         std::cout << value << "f" << std::endl;
