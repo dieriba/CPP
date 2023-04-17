@@ -1,7 +1,8 @@
-#include <vector>
-#include <cstdlib>
-#include <iostream>
-#include <algorithm>
+# include <vector>
+# include <cstdlib>
+# include <iostream>
+# include <algorithm>
+# include <numeric>
 
 class Span
 {

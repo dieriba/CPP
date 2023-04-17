@@ -17,6 +17,10 @@ class MutantStack : public std::stack<T>
 };
 
 template<typename T>
-MutantStack<T>& MutantStack<T>::operator=(const MutantStack<T>& rhs){return *this;}
+MutantStack<T>& MutantStack<T>::operator=(const MutantStack<T>& rhs)
+{
+    (void)rhs;
+    return *this;
+}
 template<typename T>
 MutantStack<T>::MutantStack(const MutantStack<T>& rhs):std::stack<T>(){(void)rhs;}

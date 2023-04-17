@@ -53,18 +53,18 @@ int Span::shortestSpan(void)
 {
     if (arr.empty() || arr.size() == 1)
         throw std::runtime_error("No span found");
-    int shortSpan = abs(arr.at(0) - arr.at(1));
-    int to_store;
-    for (std::size_t i = 0; i < size - 1; i++)
+    int tmp = -1;
+    std::vector<int> _vec = arr;
+    std::sort(_vec.begin(), _vec.end());
+ 
+    for(size_t i = 0; i < _vec.size() - 1; i++)
     {
-        for (std::size_t j = i + 1; j < size; j++)
-        {
-            to_store = abs(arr.at(i) - arr.at(j));
-            if (to_store < shortSpan)
-                shortSpan = to_store;
-        }
+        if (tmp == -1)
+            tmp = _vec[i + 1] - _vec[i];
+        else if (tmp > _vec[i + 1] - _vec[i])
+            tmp = _vec[i + 1] - _vec[i];
     }
-    return shortSpan;
+    return tmp;
 }
 
 int Span::longestSpan(void)
@@ -79,9 +79,6 @@ int Span::longestSpan(void)
 void Span::fillArray()
 {
     for (size_t i = 0; i < size; i++)
-    {
         arr.push_back(i);
-    }
-    
 }
 /*----------------------------------------MEMBER/FUNCTION-----------------------------------------*/
