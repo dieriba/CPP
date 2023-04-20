@@ -1,10 +1,11 @@
-#include <string>
-#include <sstream>
-#include <map>
-#include <fstream>
-#include <cstdlib>
-#include <iostream>
-#include <algorithm>
+# include <string>
+# include <sstream>
+# include <map>
+# include <fstream>
+# include <cstdlib>
+# include <iostream>
+# include <algorithm>
+# include <set>
 
 # define BASE "0123456789-."
 # define BASE_DATE "0123456789-"
@@ -32,7 +33,7 @@ class BitcoinExchange
         /*MEMBER FUNC*/
         void printRate(void) const;
         void clearAndPrint(std::string& line) const;
-        void findValueOfBitcoin(const std::string& date, double& value) const;
+        bool findValueOfBitcoin(const std::string& date, double& value) const;
     private:
         std::string _filename;
 };

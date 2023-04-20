@@ -40,7 +40,7 @@ bool BitcoinExchange::checkValidDateFormat(std::string& date, const size_t& len_
     return true ;
 }
 
-void BitcoinExchange::findValueOfBitcoin(const std::string& date, double& value) const
+bool BitcoinExchange::findValueOfBitcoin(const std::string& date, double& value) const
 {
     std::map<std::string, double>::iterator it = BitcoinExchange::_tree.begin();
     std::map<std::string, double>::iterator end = BitcoinExchange::_tree.end();
@@ -52,7 +52,7 @@ void BitcoinExchange::findValueOfBitcoin(const std::string& date, double& value)
     else
     {
         if (date < begin -> first)
-            value = -1;
+            return false;
         else
         {
             it++;
@@ -64,10 +64,10 @@ void BitcoinExchange::findValueOfBitcoin(const std::string& date, double& value)
                     break ;
                 }
             }
-            value = ((it == end) ? --end -> second : it -> second);
+            value = ((it == end) ? (--it) -> second : it -> second);
         }
     }
-
+    return true;
 }
 
 void BitcoinExchange::clearAndPrint(std::string& line) const
@@ -85,8 +85,9 @@ void BitcoinExchange::clearAndPrint(std::string& line) const
         printErr("bad input => " + s);
     else
     {
-        findValueOfBitcoin(s, value);
-        if (!std::isspace(s1.at(0)) || s1.find_first_not_of(BASE, 1) != std::string::npos || s1.size() <= 1)
+        if (!findValueOfBitcoin(s, value))
+            std::cout << "Can't find a date lower than " << s << std::endl;
+        else if (!std::isspace(s1.at(0)) || s1.find_first_not_of(BASE, 1) != std::string::npos || s1.size() <= 1)
             printErr("bad input => " + s1);
         else
         {
@@ -95,8 +96,6 @@ void BitcoinExchange::clearAndPrint(std::string& line) const
             s1.erase(0, 1);
             if (ss.fail() || base_val > 1000)
                 printErr("too large a number");
-            else if (value == -1)
-                printErr("Can't find a lower date than this one");
             else if (base_val < 0)
                 printErr("not a positive number.");
             else

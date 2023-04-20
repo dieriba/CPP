@@ -17,7 +17,7 @@ DiamondTrap::DiamondTrap():ClapTrap(),FragTrap(),ScavTrap()
 }
 
 DiamondTrap::DiamondTrap(const std::string& name)
-:ClapTrap(name + "_clap_name"),FragTrap(name),ScavTrap(name)
+:ClapTrap(name + "_clap_name"),FragTrap(name + "_frag_name"),ScavTrap(name + "_scav_trap")
 {
     _name = name;
     _health = 100;
@@ -63,6 +63,7 @@ void DiamondTrap::whoAmI(void)
 {
     std::cout << "Am i " << ClapTrap::_name
               << " or Am i " << _name
+              << "ScavTrap: " << std::endl
               << " that is the question..." << std::endl;
 }
 void DiamondTrap::attack(const std::string& target) {ScavTrap::attack(target);}

@@ -76,6 +76,7 @@ Array<T>& Array<T>::operator=(const Array<T>& rhs)
 {
     if (this == &rhs)
         return (*this);
+    delete [] arr;
     size_t i = -1;
     lenght = rhs.getSize();
     arr = new T[lenght];

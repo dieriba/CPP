@@ -13,12 +13,10 @@ Span::Span(unsigned int n)
     arr.reserve(n);
 }
 
-Span::Span(const Span& rhs)
+Span::Span(const Span& rhs):size(rhs.getSize()),arr(rhs.arr)
 {
     size = rhs.getSize();
-    arr.reserve(size);
-    for (unsigned int i = 0; i < size; i++)
-        arr[i] = rhs.arr.at(i);    
+    arr = rhs.arr;
 }
 
 Span& Span::operator=(const Span& rhs)
@@ -26,9 +24,7 @@ Span& Span::operator=(const Span& rhs)
     if (this == &rhs)
         return *this;
     size = rhs.getSize();
-    arr.reserve(size);
-    for (unsigned int i = 0; i < size; i++)
-        arr[i] = rhs.arr.at(i);
+    arr = rhs.arr;
     return *this; 
 }
 
@@ -76,9 +72,13 @@ int Span::longestSpan(void)
     return max - min;
 }
 
-void Span::fillArray()
+
+
+
+void Span::fillArray(it_vec it, it_vec end)
 {
-    for (size_t i = 0; i < size; i++)
-        arr.push_back(i);
+    for (; it != end; it++)
+        arr.push_back(*it);
+    std::cout << arr << std::endl;
 }
 /*----------------------------------------MEMBER/FUNCTION-----------------------------------------*/
